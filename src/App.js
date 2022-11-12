@@ -1,20 +1,30 @@
+import "./App.css";
+import React from "react";
 import { 
   BrowserRouter, 
-  Router, 
-  Route 
+  Routes, 
+  Route,
 } from "react-router-dom";
-import Header from "./Components/Header";
-import SliderMain from "./Main/components/slider";
+import Header from "./Pages/Header/index";
+import Home from "./Pages/Home/home";
+
 
 
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <SliderMain/>
+    <React.Fragment className="container">
+  
+       <Header/>
+       <BrowserRouter>
+          <Routes>
+              <Route index element={ <Home/>}/>
+          </Routes>
+       </BrowserRouter>
       
-    </div>
+     
+     
+    </React.Fragment>
   );
 }
 

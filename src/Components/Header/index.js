@@ -11,7 +11,7 @@ const Header = ()=>{
                 
                 <div className="col-lg-3 col-md-3 col-sm-3 col-xs-8">
                     <div className="logo">
-                        <a href="index.html"><img src="images/logo.png" alt=""/> </a>
+                        <a href="/"><img src="images/logo2.png" style={{width:"120px", borderRadius:"25px"}} alt=""/> </a>
                     </div>
                 </div>
                 
