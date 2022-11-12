@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 const Slider = () => {
   useEffect(() => {
-    window.$(".owl-one").owlCarousel({    //
+    window.$(".owl-one").owlCarousel({    //public >> js içinde ki dosya
       loop: true,
       margin: 0,
       autoplay: true,
@@ -10,8 +10,8 @@ const Slider = () => {
       Item_Width: 100,
       nav: true,
       navText: [
-        '<i className="fa fa-angle-left"></i>',
-        '<i className="fa fa-angle-right "></i>',
+        "<i className='fa fa-angle-left'></i>",
+        "<i className='fa fa-angle-right'></i>",
       ],
       responsive: {
         0: {
@@ -42,8 +42,8 @@ const Slider = () => {
     <React.Fragment className="container"> 
       <div className="slider">
         <div className="owl-carousel owl-one owl-theme">
-          <div className="item">
-            <div className="slider-img">
+          <div className="item" >
+            <div className="slider-img" >
               <img src="images/slider_1.jpg" alt="" />
             </div>
             <div className="container">

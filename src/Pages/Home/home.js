@@ -1,6 +1,5 @@
 import React from "react";
-import Slider from "../../Main/components/slider.js"
-
+import Slider from "../../Components/Main/slider.js" 
 const Home = (props) => {
 
     return(

@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Header from "./Pages/Header/index";
 import Home from "./Pages/Home/home";
+import FooterPage from "./Pages/Footer";
 
 
 
@@ -22,7 +23,7 @@ function App() {
           </Routes>
        </BrowserRouter>
       
-     
+     <FooterPage/>
      
     </React.Fragment>
   );
