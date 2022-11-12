@@ -1,5 +1,4 @@
 import React from "react";
-import Product from "../../Components/Main/product.js";
 import Slider from "../../Components/Main/slider.js" 
 const Home = (props) => {
 
@@ -9,9 +8,7 @@ const Home = (props) => {
                 <div>
                 <Slider/>
                 </div>
-                <div>
-                <Product/>
-                </div>
+                
            
             
             </div>

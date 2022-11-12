@@ -8,6 +8,7 @@ import {
 import Header from "./Pages/Header/index";
 import Home from "./Pages/Home/home";
 import FooterPage from "./Pages/Footer";
+import CategoryDetail from "./Pages/Home/CategoryDetail";
 
 
 
@@ -20,6 +21,7 @@ function App() {
        <BrowserRouter>
           <Routes>
               <Route index element={ <Home/>}/>
+              <Route path=":categoryDetail" element={<CategoryDetail/>}/>
              
           </Routes>
        </BrowserRouter>
