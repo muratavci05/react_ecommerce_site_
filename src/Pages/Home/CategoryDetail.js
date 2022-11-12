@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import useApi from '../../Hooks/useApi'
-import CategoryItem from './CategoryItem'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useApi from "../../Hooks/useApi";
+import CategoryItem from "./CategoryItem";
 
 const CategoryDetail = (props) => {
   console.log("Categori Detail >> PROPS >> ", props);
-  const params = useParams()
-  console.log("params", params)
-  const api = useApi()
+  const params = useParams();
+  console.log("CATEGORI DETAIL >>> PARAMS >>>", params);
+  const api = useApi();
 
   const [categoryDetail, setCategoryDetail] = useState(null)
 
@@ -17,10 +17,11 @@ const CategoryDetail = (props) => {
   useEffect(() => {
 
     // queryData isimli bir boş değişken tanımladı, apinin içinde ki ürünlerin takxonları params ile eşitlendi
+    // >>> i <<< api.get("shop/products?productTaxons.taxon.code="+params.categoryCode) olması gereken 
     const queryData = {}
     queryData["productTaxons.taxon.code"] = params.categoryCode
 
-    //api.get("shop/products?productTaxons.taxon.code="+params.categoryCode)
+    
 
     api
       .get(`shop/products`, { params: queryData })
