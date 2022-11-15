@@ -1,26 +1,26 @@
 import React from 'react'
 
 const MenuItem = (props) => {
-  console.log("Header Component Menu Item Props", props);
+  console.log('PROPS:::,', props)
   const temp = (
     <ul>
       <li>
         <a href="checkout.html">Checkout Form</a>
       </li>
       <li>
-        <a href="cart.html">Cart</a>{' '};
+        <a href="cart.html">Cart</a>{' '}
       </li>
       <li>
-        <a href="login-form.html">Login</a>{' '};
+        <a href="login-form.html">Login</a>{' '}
       </li>
       <li>
-        <a href="signup-form.html">Signup</a>{' '};
+        <a href="signup-form.html">Signup</a>{' '}
       </li>
       <li>
-        <a href="404-page.html">404-page</a>{' '};
+        <a href="404-page.html">404-page</a>{' '}
       </li>
       <li>
-        <a href="styleguide.html">styleguide</a>{' '};
+        <a href="styleguide.html">styleguide</a>{' '}
       </li>
     </ul>
   )
@@ -34,4 +34,4 @@ const MenuItem = (props) => {
   )
 }
 
-export default MenuItem;
+export default MenuItem

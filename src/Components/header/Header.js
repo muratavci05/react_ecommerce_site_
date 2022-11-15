@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from 'react'
-import headerlogo from "./component/assents/logo2.png"
-import useApi from '../../Hooks/useApi'
-import MenuItem from "./component/menuItem";
-import { connect } from 'react-redux';
+import React, { useState } from 'react'
+import headerlogo from './assets/logoheader.png'
+import useApi from '../../hooks/useApi'
+import { useEffect } from 'react'
+import MenuItem from './components/menu-item'
+import { connect } from 'react-redux'
 
 const Header = (props) => {
-  const [categories, setCategories] = useState(null);
+  console.log("Header >> Item-Count-Props >>>", props);
+  const [categories, setCategories] = useState(null)
   const api = useApi()
-  console.log('CATEGORİES:::', categories)
+  console.log('CATEGORİES >>>', categories)
   const catArr = []
 
   useEffect(() => {
     api
       .get('shop/taxons')
       .then((response) => {
-        console.log("SHOP-TAXONS RESPONSE >>>", response)
+        console.log('shop-TAXON RESPONSIVE >>>', response)
         setCategories(response.data['hydra:member'])
       })
 
       .catch((err) => {
-        console.log("SHOP-TAXONS ERROR >>>", err)
+        console.log('TAXONS ERROR >>', err)
       })
   }, [])
 
   if (categories === null) {
-    return <div>LOADING</div>
+    return <div>LOADİNG:</div>
   }
   categories.map((item, index) => {
     catArr.push(
-      <MenuItem key={index} name={item.name} code={item.code} id={item.id} />
+      <MenuItem key={index} name={item.name} code={item.code} id={item.id} />,
     )
   })
 
   return (
     <React.Fragment>
-      <div className="top-header">
-        <div className="container">
+      <div className="container col">
+        <div className="container py-3">
           <div className="row">
             <div className="col-lg-8 col-md-7 col-sm-6 hidden-xs">
-              <p className="top-text">Flexible Delivery, Fast Delivery.</p>
+              <p className="top-text"></p>
             </div>
             <div className="col-lg-4 col-md-5 col-sm-6 col-xs-12">
               <ul>
@@ -94,9 +96,15 @@ const Header = (props) => {
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="title">
+                          <a href="/cart" className="title">
                             <i className="fa fa-shopping-cart"></i>{' '}
-                            <sup className="cart-quantity">1</sup>
+                            <sup className="cart-quantity">
+                              
+                              {
+                                props.cartState
+                                ? props.cartState.itemsCount : 0 }                      
+                              
+                            </sup>
                           </a>
                         </li>
                       </ul>
