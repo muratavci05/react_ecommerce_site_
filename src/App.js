@@ -1,19 +1,20 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from './components/header/Header'
-import useApi from './hooks/useApi'
-import Footer from './components/footer/Footer'
-import CategoryDetail from './pages/category/CategoryDetail'
-import Home from './pages/home/Home'
+import Header from './Components/header/header'
+import useApi from './Hooks/useApi'
+import Footer from './Components/footer/footer'
+import CategoryDetail from './Pages/category/CategoryDetail'
+import Home from './Pages/home/home'
 import React from 'react'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import Login from './Pages/Login'
+import Register from './Pages/Register'
 import { connect } from 'react-redux'
-import ProductDetail from './pages/category/ProductDetail'
-import Cart from './pages/Cart/cart.js'
+import ProductDetail from './Pages/category/ProductDetail'
+import Cart from './Pages/Cart/cart'
+
 function App(props) {
-  console.log('APPPROPS::', props)
-  const api = useApi()
+  console.log('APP PROPS>>>', props)
+  const api = useApi();
 
   api
     .get('shop/countries')
@@ -31,13 +32,13 @@ function App(props) {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/category">
             <Route path=":categoryCode" element={<CategoryDetail />} />
           </Route>
           <Route path="/product">
             <Route path=":productCode" element={<ProductDetail />} />
           </Route>
-          <Route path="/cart" element={<Cart/>}/>
         </Routes>
       </BrowserRouter>
       ,

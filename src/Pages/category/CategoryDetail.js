@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import useApi from '../../hooks/useApi'
+import useApi from '../../Hooks/useApi'
 import CategoryItem from './CategoryItem'
 
 const CategoryDetail = (props) => {

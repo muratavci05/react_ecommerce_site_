@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import useApi from '../../hooks/useApi'
+import useApi from '../../Hooks/useApi'
 import { connect } from 'react-redux'
 import { SET_CART } from '../../redux/reducers/cartReducer'
 

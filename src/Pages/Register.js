@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { applyMiddleware } from 'redux'
-import useApi from '../hooks/useApi'
+import useApi from '../Hooks/useApi'
 
 const Register = () => {
   const [firstName, setFirstName] = useState('')

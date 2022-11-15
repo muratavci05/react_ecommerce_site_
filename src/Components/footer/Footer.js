@@ -1,5 +1,4 @@
 import React from 'react'
-import ftlogo from './assets/footer.png'
 
 const Footer = () => {
   return (
