@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import logo from "./component/assents/logo2.png"
+import React, { useState, useEffect } from 'react'
+import headerlogo from "./component/assents/logo2.png"
 import useApi from '../../Hooks/useApi'
-import { useEffect } from 'react'
 import MenuItem from "./component/menuItem";
 import { connect } from 'react-redux';
 
