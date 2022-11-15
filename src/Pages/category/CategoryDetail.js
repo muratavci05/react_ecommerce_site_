@@ -1,36 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import useApi from "../../Hooks/useApi";
-import CategoryItem from "./CategoryItem";
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import useApi from '../../hooks/useApi'
+import CategoryItem from './CategoryItem'
 
 const CategoryDetail = (props) => {
-  console.log("Categori Detail >> PROPS >> ", props);
-  const params = useParams();
-  console.log("CATEGORI DETAIL >>> PARAMS >>>", params);
-  const api = useApi();
+  console.log('detailprops', props)
+  const params = useParams()
+  console.log('params', params)
+  const api = useApi()
 
   const [categoryDetail, setCategoryDetail] = useState(null)
 
   const productArr = []
 
-  
   useEffect(() => {
-
-    // queryData isimli bir boş değişken tanımladı, apinin içinde ki ürünlerin takxonları params ile eşitlendi
-    // >>> i <<< api.get("shop/products?productTaxons.taxon.code="+params.categoryCode) olması gereken 
     const queryData = {}
-    queryData["productTaxons.taxon.code"] = params.categoryCode
+    queryData['productTaxons.taxon.code'] = params.categoryCode
 
-    
+    //api.get("shop/products?productTaxons.taxon.code="+params.categoryCode)
 
     api
       .get(`shop/products`, { params: queryData })
       .then((response) => {
-        console.log('categorydetailRESPONSE', response);
-        setCategoryDetail(response.data['hydra:member']);
+        console.log('categorydetailRESPONSE', response)
+        setCategoryDetail(response.data['hydra:member'])
       })
       .catch((err) => {
-        console.log('categorydetailERR', err);
+        console.log('categorydetailERR', err)
       })
   }, [])
 
@@ -48,8 +44,8 @@ const CategoryDetail = (props) => {
     )
   })
 
-    return(
-        <div className="content">
+  return (
+    <div className="content">
       <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12">
@@ -273,7 +269,7 @@ const CategoryDetail = (props) => {
         </div>
       </div>
     </div>
-    )
+  )
 }
 
-export default CategoryDetail;
+export default CategoryDetail

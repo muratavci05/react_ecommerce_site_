@@ -1,21 +1,12 @@
-import React from "react";
-import Slider from "../../Components/Main/slider.js" 
-const Home = (props) => {
+import React from 'react'
+import Slider from './Slider'
 
-    return(
-        <div className="container">
-            <div>
-                <div>
-                <Slider/>
-                </div>
-                
-           
-            
-            </div>
-           
-        </div>
-
-    )
+const Home = () => {
+  return (
+    <div className='container'>
+      <Slider />
+    </div>
+  )
 }
 
-export default Home;
+export default Home

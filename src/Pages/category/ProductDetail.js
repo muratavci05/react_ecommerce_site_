@@ -1,23 +1,80 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import useApi from '../../Hooks/useApi'
+import useApi from '../../hooks/useApi'
+import { connect } from 'react-redux'
+import { SET_CART } from '../../redux/reducers/cartReducer'
 
 const ProductDetail = (props) => {
-  const params = useParams();
-  const api = useApi();
-  console.log('>>> productdetail params >>>', params);
+  const params = useParams()
+  const api = useApi()
+ // console.log('productdetailparams', params)
 
   const [productDetail, setProductDetail] = useState(null)
 
+  const addItemToCart=(tokenValue)=>{
+    const postData = {
+      
+        productVariant: productDetail.defaultVariant,
+        quantity: 1,
+      
+    }
+    //createCart ve additem içinde ki veri aynı olduğu için aynı dispatc işlemi yapıldı
+    api.post (`shop/orders/${tokenValue}/items`, postData)
+      .then((res)=>{
+        console.log("ADD-ITEM-RES",res);
+        props.dispatch({
+          type: SET_CART,
+          payload: res.data,
+          })
+
+      })
+      .catch((err)=>{
+        console.log("addItem",err);
+      })
+  }
+  
+
+  const onAddToCartClick = () => {
+    console.log (productDetail);
+    console.log ("PRODUCT-DETAIL", props);
+    const tokenValue = "";
+
+
+
+    if (props.cartState === null){
+
+      const postData = {
+        localeCode: "en_US",
+      }
+    //createCart ve addItem () içinde ki veri aynı olduğu için aynı dispatc işlemi yapıldı
+      api.post("shop/orders",postData)
+        .then((res)=>{
+          console.log("CREATE-CART-RES",res);
+          props.dispatch({
+          type: SET_CART,
+          payload: res.data,
+          })
+          addItemToCart(res.data.tokenValue)
+        })
+        .catch((err)=>{
+          console.log("creatCart error",err);
+        })
+    }
+    else{
+      addItemToCart(props.cartState.tokenValue)
+    }
+  }
+
+    
   useEffect(() => {
     api
       .get('shop/products/' + params.productCode)
-      .then((res) => {
-        console.log('productdetail response::', res)
-        setProductDetail(res.data)
+      .then((response) => {
+        console.log('productdetailresponse::', response)
+        setProductDetail(response.data)
       })
       .catch((err) => {
-        console.log('productdetail ERRR::', err)
+        console.log('productdetailERRR::', err)
       })
   }, [])
   if (productDetail === null) {
@@ -84,7 +141,7 @@ const ProductDetail = (props) => {
                           />
                         </div>
                       </div>
-                      <button type="submit" className="btn btn-default">
+                      <button onClick={onAddToCartClick} type="button" className="btn btn-default">
                         <i className="fa fa-shopping-cart"></i>&nbsp;Add to cart
                       </button>
                     </div>
@@ -577,4 +634,8 @@ const ProductDetail = (props) => {
   )
 }
 
-export default ProductDetail;
+const mapStateToProps = (state) => {
+  return {...state}
+};
+
+export default connect(mapStateToProps)(ProductDetail);
